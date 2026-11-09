@@ -1,6 +1,4 @@
 #region ========== Imports ==========
-from xxlimited_35 import Null
-
 from model.enums import Protein, Vegetable, Sauce
 
 #endregion
@@ -32,7 +30,7 @@ class Sushi:
     # Update
     def set_name(self, name):
         if not isinstance(name, str) or len(name.strip()) < 3:
-            raise ValueError("Ugyldigt navn")
+            raise ValueError("Ugyldigt navn. Skal være mindst 3 tegn")
         self.__name = name.strip()
 
     def set_price(self, price):

@@ -1,5 +1,5 @@
 #region ========== Imports ==========
-from model.sushi import Sushi
+from model.sushi import Sushi, Nigiri, Maki, Uramaki
 from model.enums import SortBy
 
 #endregion
@@ -27,8 +27,9 @@ class SushiMachine:
 
 
     # Delete
-    def delete_sushi(self, index):
-        return self.__menu.pop(index)
+    def delete_sushi(self, sushi):
+        self.__menu.remove(sushi)
+        return sushi
 
 
     # Sort
@@ -41,5 +42,22 @@ class SushiMachine:
                     return sorted(self.__menu, key=lambda sushi: sushi.get_price())
                 case SortBy.NEWEST:
                     return list(reversed(self.__menu))
+
+    def get_sorted_menu(self):
+        menu = self.get_menu()
+
+        menu_nigiri = []
+        menu_maki = []
+        menu_uramaki = []
+
+        for sushi in menu:
+            if type(sushi) == Nigiri:
+                menu_nigiri.append(sushi)
+            elif type(sushi) == Maki:
+                menu_maki.append(sushi)
+            elif type(sushi) == Uramaki:
+                menu_uramaki.append(sushi)
+
+        return menu_nigiri + menu_maki + menu_uramaki
 
 #endregion
