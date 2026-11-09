@@ -1,7 +1,8 @@
-# ========== Imports ==========
+#region ========== Imports ==========
 from model.sushi import Sushi
 from model.enums import SortBy
 
+#endregion
 
 #region ========== Classes ==========
 class SushiMachine:
@@ -24,15 +25,11 @@ class SushiMachine:
 
     # Update
 
+
     # Delete
     def delete_sushi(self, index):
         return self.__menu.pop(index)
 
-    def delete_drink(self, drink_number):
-        if self.is_valid_index(drink_number):
-            return self.__drink_list.pop(drink_number)
-        else:
-            raise ValueError(f'{drink_number} is an invalid drink')
 
     # Sort
     def sort_menu(self, sort_by):
@@ -44,7 +41,5 @@ class SushiMachine:
                     return sorted(self.__menu, key=lambda sushi: sushi.get_price())
                 case SortBy.NEWEST:
                     return list(reversed(self.__menu))
-
-
 
 #endregion
