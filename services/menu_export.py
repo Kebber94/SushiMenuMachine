@@ -6,19 +6,20 @@ from model.sushi import Nigiri, Maki, Uramaki
 
 #region ========== Classes ==========
 
+# Eksporterer menukortet til en tekstfil
 class MenuExport:
-
     @staticmethod
     def export_menu(machine):
-        #date = datetime.now().strftime("%d-%m-%Y_%H-%M")
-        date = datetime.now().strftime("%d-%m-%Y")
+        date = datetime.now().strftime("%d-%m-%Y_%H-%M")
 
+        filename = f'{date} - Sushi menu export'
 
-        with open(f"data/{date} - Sushi menu export.txt", "w", encoding="utf-8") as file:
-            file.write("=== SUSHI MAKER 3000 ===\n\n")
+        menu = machine.get_sorted_menu()
 
-            menu = machine.get_sorted_menu()
+        with open(f'data/{filename}.txt', 'w', encoding='utf-8') as file:
+            file.write("=== Sushi Menu Maker 3000 ===\n\n")
 
+            # Holder styr på den forrige sushi-type, så overskrifter ikke gentages
             previous_type = None
 
             for number, sushi in enumerate(menu, start=1):

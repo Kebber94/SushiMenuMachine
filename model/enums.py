@@ -25,22 +25,9 @@ class Sauce(str, Enum):
     CHILLI_MAYO = "Chilli-mayo"
     SOYA        = "Soya"
 
-# Andet
 
+# Andet
 class SortBy(int, Enum):
     NAME = 1
     PRICE = 2
     NEWEST = 3
-
-
-
-# region tests
-if __name__ == "__main__":
-
-    fillings = [protein.value for protein in Protein] + [vegetable.value for vegetable in Vegetable]
-    print(fillings)
-
-    fil = list(Protein) + list(Vegetable)
-    print(fil)
-
-# endregion

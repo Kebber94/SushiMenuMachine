@@ -5,17 +5,19 @@ from model.enums import SortBy
 #endregion
 
 #region ========== Classes ==========
-class SushiMachine:
+class SushiMenuMachine:
     def __init__(self):
         self.__menu = []
 
     # Create
     def add_sushi(self, sushi):
-        # Sikre, at vi kun tilføjer objekter baseret på Sushi-klassen
-        if isinstance(sushi, Sushi):
-            self.__menu.append(sushi)
+        # Sikrer, at vi kun tilføjer objekter baseret på Sushi-klassen
+        if not isinstance(sushi, Sushi):
+            raise ValueError('Ugyldig objekt. Skal være af typen Sushi')
+        self.__menu.append(sushi)
 
-    # Read
+
+    # Read - Returnerer en kopi af listen for at beskytte den originale liste
     def get_menu(self):
         return list(self.__menu)
 
@@ -23,16 +25,13 @@ class SushiMachine:
         return self.__menu[index]
 
 
-    # Update
-
-
-    # Delete
+    # Delete - sletter sushi-objekter fra menuen
     def delete_sushi(self, sushi):
         self.__menu.remove(sushi)
         return sushi
 
 
-    # Sort
+    # Sort - Sorterer menukortet i enten navn, pris eller senest tilføjet
     def sort_menu(self, sort_by):
         if isinstance(sort_by, SortBy):
             match sort_by:
@@ -43,9 +42,13 @@ class SushiMachine:
                 case SortBy.NEWEST:
                     return list(reversed(self.__menu))
 
-    def get_sorted_menu(self):
-        menu = self.get_menu()
+    # menu bruges som valgfri parameter, så metoden også kan anvendes på andre menuer
+    def get_sorted_menu(self, menu=None):
+        # Bruger maskinens menukort, hvis ingen menu angives.
+        if menu is None:
+            menu = self.get_menu()
 
+        # Grupperer derefter sushi efter type: Nigiri, Maki og Uramaki.
         menu_nigiri = []
         menu_maki = []
         menu_uramaki = []
