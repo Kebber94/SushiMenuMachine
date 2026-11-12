@@ -1,0 +1,18 @@
+=== Sushi Menu Maker 3000 ===
+
+
+🍣 Nigiri:
+    1. Laks - 25 kr.
+            Laks | Teriyaki
+    2. Den med tun - 15 kr.
+            Tun
+
+🍣 Maki:
+    3. Ebi - 45 kr.
+            Tempura Reje, Avocado, Agurk, Forårsløg | Teriyaki | Sesam: Ja
+    4. Dragon roll - 50 kr.
+            Tempura Reje, Laks, Avocado, Forårsløg | Chilli-mayo | Sesam: Ja
+
+🍣 Uramaki: Inside-Out
+    5. Alaska roll - 45 kr.
+            Laks, Agurk | Sesam: Nej
