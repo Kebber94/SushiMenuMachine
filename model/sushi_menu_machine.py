@@ -8,6 +8,7 @@ from model.enums import SortBy
 class SushiMenuMachine:
     def __init__(self):
         self.__menu = []
+        self.__sort_by = None
 
     # Create
     def add_sushi(self, sushi):
@@ -34,6 +35,8 @@ class SushiMenuMachine:
     # Sort - Sorterer menukortet i enten navn, pris eller senest tilføjet
     def sort_menu(self, sort_by):
         if isinstance(sort_by, SortBy):
+            self.__sort_by = sort_by
+
             match sort_by:
                 case SortBy.NAME:
                     return sorted(self.__menu, key=lambda sushi: sushi.get_name())
@@ -46,7 +49,10 @@ class SushiMenuMachine:
     def get_sorted_menu(self, menu=None):
         # Bruger maskinens menukort, hvis ingen menu angives.
         if menu is None:
-            menu = self.get_menu()
+            if self.__sort_by is not None:
+                menu = self.sort_menu(self.__sort_by)
+            else:
+                menu = self.get_menu()
 
         # Grupperer derefter sushi efter type: Nigiri, Maki og Uramaki.
         menu_nigiri = []
