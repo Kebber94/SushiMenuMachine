@@ -1,5 +1,5 @@
-#Eksamensdisposition#
-#Sushi Menu Maker 3000#
+#Eksamensdisposition
+#Sushi Menu Maker 3000
 
 ##1. Indledning##
 Sushi Menu Maker 3000 er et konsolbaseret program udviklet i Python. Formålet er at gøre det muligt at administrere et sushi-menukort, hvor brugeren nemt kan oprette, vise, redigere og slette forskellige typer sushi.
